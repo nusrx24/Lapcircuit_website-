@@ -64,7 +64,7 @@ export default function ContactPage() {
               Let&apos;s build your <span className="text-gradient">business setup</span>
             </h1>
             <p className="text-body text-lg font-medium">
-              Whether you need a full POS installation or high-performance laptops,
+              Whether you need a full POS installation, custom software, or mobile applications,
               our team is ready to help you scale.
             </p>
           </div>
@@ -77,23 +77,23 @@ export default function ContactPage() {
                   Contact Information
                 </h3>
                 <div className="space-y-10">
-                  <a href="tel:+94XXXXXXXXX" className="flex items-start gap-6 text-slate-600 hover:text-blue-600 transition-colors group">
+                  <a href="tel:+94711249740" className="flex items-start gap-6 text-slate-600 hover:text-blue-600 transition-colors group">
                     <div className="icon-box">
                       <Phone size={22} />
                     </div>
                     <div className="pt-1">
                       <p className="text-xs text-slate-500 mb-1.5 font-bold uppercase tracking-wider">Call Us Directly</p>
-                      <p className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors">+94 XX XXX XXXX</p>
+                      <p className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors">+94 71 124 9740</p>
                     </div>
                   </a>
 
-                  <a href="mailto:info@lapcircuit.lk" className="flex items-start gap-6 text-slate-600 hover:text-blue-600 transition-colors group">
+                  <a href="mailto:lapcircuitinfo@gmail.com" className="flex items-start gap-6 text-slate-600 hover:text-blue-600 transition-colors group">
                     <div className="icon-box">
                       <Mail size={22} />
                     </div>
                     <div className="pt-1">
                       <p className="text-xs text-slate-500 mb-1.5 font-bold uppercase tracking-wider">Email Us</p>
-                      <p className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors">info@lapcircuit.lk</p>
+                      <p className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors">lapcircuitinfo@gmail.com</p>
                     </div>
                   </a>
 
@@ -114,7 +114,7 @@ export default function ContactPage() {
 
                 <h3 className="heading-md text-white mb-3 relative z-10">Need an immediate answer?</h3>
                 <p className="text-slate-400 text-[15px] mb-8 font-medium relative z-10">Our technical support team is active on WhatsApp.</p>
-                <a href="https://wa.me/94XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full justify-center relative z-10 !py-4">
+                <a href="https://wa.me/94711249740" target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full justify-center relative z-10 !py-4">
                   Message on WhatsApp
                 </a>
               </div>
@@ -156,10 +156,12 @@ export default function ContactPage() {
                     <label htmlFor="service_interest" className="text-[13px] font-bold uppercase tracking-wider text-slate-600">Interested In</label>
                     <select required id="service_interest" name="service_interest" className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium text-slate-900 outline-none appearance-none">
                       <option value="">Select one...</option>
-                      <option value="pos_system">POS System Setup</option>
-                      <option value="laptops">Laptop Purchase</option>
-                      <option value="maintenance">Maintenance Contract</option>
-                      <option value="both">Both POS & Laptops</option>
+                      <option value="pos_system">POS System Development</option>
+                      <option value="desktop_software">Desktop Software Development</option>
+                      <option value="mobile_app">Mobile Application Development</option>
+                      <option value="inventory_billing">Inventory & Billing Systems</option>
+                      <option value="maintenance">Maintenance & Support</option>
+                      <option value="other">Other</option>
                     </select>
                   </div>
                 </div>

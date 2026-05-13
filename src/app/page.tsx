@@ -2,8 +2,18 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Monitor, Laptop, Star, Trophy, Target, ShieldCheck, Zap } from "lucide-react";
+import CustomerHandover from "@/components/home/CustomerHandover";
+import TrustedBy from "@/components/home/TrustedBy";
+import FeaturesGrid from "@/components/home/FeaturesGrid";
+import AboutSection from "@/components/home/AboutSection";
+import { safeFetch, supabase } from "@/lib/supabase";
 
-export default function Home() {
+export default async function Home() {
+  const clientsResult = await safeFetch(
+    supabase.from("client_logos").select("*").eq("is_active", true).order("display_order"),
+    []
+  );
+
   return (
     <main className="flex flex-col min-h-screen relative selection:bg-blue-500/30">
       <Header />
@@ -42,8 +52,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── SECTION 1.5: TRUSTED BY ── */}
+      <TrustedBy clients={clientsResult || []} />
+
       {/* ── SECTION 2: STATISTICS ROW ── */}
-      <section className="-mt-12 relative z-20 pb-24">
+      <section className="relative z-20 pb-24 pt-12 bg-white">
         <div className="container-xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             <div className="stat-card">
@@ -65,6 +78,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── SECTION 2.5: WHO WE ARE (ABOUT) ── */}
+      <AboutSection />
 
       {/* ── SECTION 3: SERVICES ── */}
       <section className="pb-32 relative z-10">
@@ -124,41 +140,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 4: APPROACH / PROCESS ── */}
-      <section className="py-24 bg-white/60 border-y border-slate-200 backdrop-blur-sm">
-        <div className="container-xl">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="heading-lg mb-4 text-slate-900">Our Proven Approach</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-          </div>
+      {/* ── SECTION 4: CUSTOMER HANDOVER PROCESS ── */}
+      <CustomerHandover />
 
-          <div className="grid md:grid-cols-4 gap-8 relative max-w-6xl mx-auto">
-            <div className="hidden md:block absolute top-6 left-12 right-12 h-px bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0" />
-            
-            {[
-              { num: "01", title: "Understand", desc: "We consult with your team to audit current bottlenecks and map out exact hardware requirements." },
-              { num: "02", title: "Strategize", desc: "We design a tailored architecture, selecting the right POS bundles or laptops for your budget." },
-              { num: "03", title: "Implement", desc: "Our engineers deliver, install, and configure everything on-site, including staff training." },
-              { num: "04", title: "Measure", desc: "We monitor uptime and provide 24/7 lifetime preventative support for total peace of mind." }
-            ].map((step) => (
-              <div key={step.num} className="relative pt-6 group px-4">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 md:left-6 md:translate-x-0 w-12 h-12 bg-white border-2 border-blue-500 text-blue-600 rounded-full flex items-center justify-center font-bold text-lg -mt-6 shadow-sm transition-transform group-hover:scale-110 group-hover:bg-blue-50">
-                  {step.num}
-                </div>
-                
-                <div className="text-center md:text-left mt-10 md:ml-6">
-                  <h3 className="heading-md mb-3 text-slate-900">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── SECTION 4.5: ENTERPRISE FEATURES ── */}
+      <FeaturesGrid />
 
       {/* ── SECTION 5: TESTIMONIALS ── */}
       <section className="py-32">

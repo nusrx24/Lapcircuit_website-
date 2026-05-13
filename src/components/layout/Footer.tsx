@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -17,18 +17,19 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-6" style={{ textDecoration: "none" }}>
               <span className="font-heading font-black text-2xl tracking-tight text-white flex items-center gap-2">
                 <img src="/logo.png" alt="LapCircuit Logo" className="w-8 h-8 object-contain" />
-                Lap<span className="text-gradient">Circuit</span>
+                POS from <span className="text-gradient">Lapcircuit</span>
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Sri Lanka&apos;s premium partner for enterprise POS systems, high-performance laptops, and lifetime tech support.
+              POS from Lapcircuit provides modern POS systems, custom desktop software, mobile applications, and business management solutions across Sri Lanka.
             </p>
             <div className="flex gap-3">
               {[
                 { Icon: FaFacebook, href: "#", label: "Facebook" },
                 { Icon: FaInstagram, href: "#", label: "Instagram" },
-                { Icon: FaWhatsapp, href: "https://wa.me/94773457424", label: "WhatsApp" },
-                { Icon: FaLinkedin, href: "#", label: "LinkedIn" },
+                { Icon: FaWhatsapp, href: "https://wa.me/94711249740", label: "WhatsApp" },
+                { Icon: FaLinkedin, href: "https://linkedin.com/company/lapcircuit", label: "LinkedIn" },
+                { Icon: FaGithub, href: "https://github.com/lapcircuit", label: "GitHub" },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
@@ -87,8 +88,8 @@ export default function Footer() {
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider mb-6">Get In Touch</h4>
             <div className="flex flex-col gap-4">
               {[
-                { Icon: Phone, text: "+94 77 345 7424", href: "tel:+94773457424" },
-                { Icon: Mail, text: "info@lapcircuit.lk", href: "mailto:info@lapcircuit.lk" },
+                { Icon: Phone, text: "+94 71 124 9740", href: "tel:+94711249740" },
+                { Icon: Mail, text: "lapcircuitinfo@gmail.com", href: "mailto:lapcircuitinfo@gmail.com" },
                 { Icon: MapPin, text: "Colombo, Sri Lanka", href: undefined },
               ].map(({ Icon, text, href }) => (
                 <div key={text} className="flex items-start gap-3">
@@ -138,7 +139,7 @@ export default function Footer() {
       <div className="border-t border-slate-800 py-6 relative z-10 bg-slate-900/50">
         <div className="container-xl flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-sm font-medium text-slate-500">
-            © {year} LapCircuit. All rights reserved.
+            © {year} POS from Lapcircuit. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm font-medium text-slate-500 hover:text-white transition-colors" style={{ textDecoration: "none" }}>Privacy Policy</Link>

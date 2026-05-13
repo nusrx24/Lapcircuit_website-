@@ -5,37 +5,38 @@ import ParticleNetwork from "@/components/ui/ParticleNetwork";
 
 export const metadata: Metadata = {
   title: {
-    default: "LapCircuit — POS Systems & Laptop Sales in Sri Lanka",
-    template: "%s | LapCircuit",
+    default: "POS from Lapcircuit — POS Systems & Software Development in Sri Lanka",
+    template: "%s | POS from Lapcircuit",
   },
   description:
-    "LapCircuit is Sri Lanka's trusted partner for POS system handover, installation, configuration, and lifetime maintenance. We also supply new & refurbished laptops island-wide.",
+    "POS from Lapcircuit provides modern POS systems, custom desktop software, mobile applications, and business management solutions across Sri Lanka. We develop both online and offline software systems with lifetime ownership models.",
   keywords: [
-    "POS system Sri Lanka",
-    "point of sale Sri Lanka",
-    "laptop sales Sri Lanka",
-    "POS installation Colombo",
-    "retail POS system",
-    "restaurant POS",
-    "LapCircuit",
+    "POS System Sri Lanka",
+    "Best POS Software Sri Lanka",
+    "Custom Software Development Sri Lanka",
+    "Offline POS System",
+    "Online POS System Sri Lanka",
+    "Desktop Application Development",
+    "Mobile App Development Sri Lanka",
+    "Lifetime POS Software",
   ],
-  authors: [{ name: "LapCircuit" }],
-  creator: "LapCircuit",
+  authors: [{ name: "POS from Lapcircuit" }],
+  creator: "POS from Lapcircuit",
   metadataBase: new URL("https://lapcircuit.lk"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://lapcircuit.lk",
-    title: "LapCircuit — POS Systems & Laptop Sales in Sri Lanka",
+    title: "POS from Lapcircuit — POS Systems & Software Development in Sri Lanka",
     description:
-      "Sri Lanka's trusted partner for POS system supply, installation and lifetime maintenance, plus new & refurbished laptop sales.",
-    siteName: "LapCircuit",
+      "POS from Lapcircuit provides modern POS systems, custom desktop software, mobile applications, and business management solutions across Sri Lanka.",
+    siteName: "POS from Lapcircuit",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LapCircuit — POS Systems & Laptop Sales in Sri Lanka",
+    title: "POS from Lapcircuit — POS Systems & Software Development in Sri Lanka",
     description:
-      "Sri Lanka's trusted partner for POS system supply, installation and lifetime maintenance.",
+      "POS from Lapcircuit provides modern POS systems, custom desktop software, mobile applications, and business management solutions across Sri Lanka.",
   },
   robots: {
     index: true,

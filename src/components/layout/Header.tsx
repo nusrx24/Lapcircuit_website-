@@ -37,7 +37,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2" style={{ textDecoration: "none" }}>
             <img src="/logo.png" alt="LapCircuit Logo" className="w-8 h-8 object-contain" />
             <span className="font-heading font-black text-2xl tracking-tight text-slate-900">
-              Lap<span className="text-gradient">Circuit</span>
+              POS from <span className="text-gradient">Lapcircuit</span>
             </span>
           </Link>
 

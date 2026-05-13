@@ -22,21 +22,21 @@ const mockTeam = [
     name: "Nusair",
     role: "Founder & CEO",
     bio: "Tech enthusiast with over 10 years of experience in business IT setups.",
-    photo_url: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400"
+    image_url: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400"
   },
   {
     id: "2",
     name: "Mohammed Tariq",
     role: "Lead Hardware Engineer",
     bio: "Specializes in POS configuration and laptop hardware maintenance.",
-    photo_url: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400"
+    image_url: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400"
   },
   {
     id: "3",
     name: "Ayesha Perera",
     role: "Customer Success Manager",
     bio: "Ensures every client receives 24/7 lifetime support.",
-    photo_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400"
+    image_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400&h=400"
   }
 ];
 
@@ -116,7 +116,7 @@ export default async function AboutPage() {
                   <div className="h-80 w-full bg-slate-100 rounded-2xl overflow-hidden mb-6 relative">
                     <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-overlay"></div>
                     <img 
-                      src={member.photo_url || "/api/placeholder/400/400"} 
+                      src={member.image_url || "/api/placeholder/400/400"} 
                       alt={member.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />

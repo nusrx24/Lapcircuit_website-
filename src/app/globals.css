@@ -356,10 +356,21 @@
     box-shadow: var(--shadow-glow);
   }
 
-  /* ── Stars ── */
   .stars {
     display: flex;
     gap: 0.1rem;
     color: var(--star-gold);
+  }
+
+  /* ── Infinite Scroll Marquee ── */
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
   }
 }
