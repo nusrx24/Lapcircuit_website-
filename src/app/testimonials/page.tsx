@@ -90,7 +90,7 @@ export default async function TestimonialsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-24">
             <div className="stat-card">
               <div className="text-4xl md:text-5xl font-bold mb-2 font-heading">
-                <span className="text-gradient">4.9</span><span className="text-yellow-500 text-3xl ml-1">★</span>
+                <span className="text-gradient">4.9</span><span className="text-blue-500 text-3xl ml-1">★</span>
               </div>
               <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Average Rating</p>
             </div>
@@ -119,7 +119,7 @@ export default async function TestimonialsPage() {
                         key={i} 
                         size={18} 
                         fill={i < (testimonial.rating || 5) ? "currentColor" : "none"} 
-                        className={i < (testimonial.rating || 5) ? "text-yellow-500" : "text-slate-200"}
+                        className={i < (testimonial.rating || 5) ? "text-blue-500" : "text-slate-200"}
                       />
                     ))}
                   </div>
@@ -147,7 +147,7 @@ export default async function TestimonialsPage() {
 
           {/* Why Businesses Trust Us */}
           <div className="max-w-[1400px] mx-auto bg-white rounded-3xl p-10 md:p-16 border border-slate-200 shadow-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
             
             <div className="text-center mb-16 relative z-10">
               <span className="section-label">Our Guarantee</span>

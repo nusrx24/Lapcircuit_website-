@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import CursorParticles from "@/components/ui/CursorParticles";
 import ParticleNetwork from "@/components/ui/ParticleNetwork";
+import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
 export const metadata: Metadata = {
   title: {
@@ -55,6 +56,7 @@ export default function RootLayout({
         <ParticleNetwork />
         <CursorParticles />
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

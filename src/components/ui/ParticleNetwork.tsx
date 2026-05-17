@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react";
 
 /* ── Tuning ─────────────────────────────────────── */
-const PARTICLE_COUNT   = 90;
-const CONNECTION_DIST  = 130;   // px — particles within this distance get connected
-const LINE_MAX_ALPHA   = 0.10;  // max line opacity (very faint)
-const BASE_SPEED       = 0.28;  // drift speed — deliberately slow and peaceful
+const PARTICLE_COUNT   = 120;
+const CONNECTION_DIST  = 140;   
+const LINE_MAX_ALPHA   = 0.25;  
+const BASE_SPEED       = 0.32;  
 
 // Dark navy/blue palette — clearly visible on white
 const HUES = [221, 217, 234, 199, 226]; // navy, royal-blue, indigo, steel-blue, periwinkle
@@ -109,7 +109,7 @@ export default function ParticleNetwork() {
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(37, 99, 235, ${a.toFixed(3)})`;
+            ctx.strokeStyle = `rgba(30, 58, 138, ${a.toFixed(3)})`;
             ctx.stroke();
           }
         }

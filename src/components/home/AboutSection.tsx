@@ -3,7 +3,13 @@
 import { motion } from "framer-motion";
 import { Trophy, Target, Zap, Globe } from "lucide-react";
 
-export default function AboutSection() {
+export default function AboutSection({ 
+  globalUsers = "5,000+", 
+  localUsers = "1,500+" 
+}: { 
+  globalUsers?: string; 
+  localUsers?: string; 
+}) {
   return (
     <section className="py-24 relative overflow-hidden isolate bg-[#0a0f1a]">
       {/* Background Glows */}
@@ -18,7 +24,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-sm font-bold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-6"
           >
             <Trophy size={16} /> AWARD-WINNING | SINCE 2020
           </motion.div>
@@ -83,7 +89,7 @@ export default function AboutSection() {
             <div className="relative bg-[#111827]/80 backdrop-blur-xl border border-white/10 p-10 rounded-3xl h-full flex flex-col justify-center space-y-10">
               
               <div className="text-center border-b border-white/5 pb-8">
-                <div className="w-16 h-16 mx-auto bg-yellow-500/10 text-yellow-500 rounded-full flex items-center justify-center mb-4">
+                <div className="w-16 h-16 mx-auto bg-blue-500/10 text-blue-400 rounded-full flex items-center justify-center mb-4">
                   <Trophy size={32} />
                 </div>
                 <h4 className="text-white font-bold text-lg mb-1">Award-Winning Innovation</h4>
@@ -92,7 +98,7 @@ export default function AboutSection() {
               
               <div className="text-center border-b border-white/5 pb-8">
                 <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2 font-heading">
-                  5,000+
+                  {globalUsers}
                 </div>
                 <h4 className="text-white font-bold mb-1">Active Users Globally</h4>
                 <p className="text-slate-400 text-sm">Across nine countries worldwide</p>
@@ -100,7 +106,7 @@ export default function AboutSection() {
 
               <div className="text-center">
                 <div className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2 font-heading">
-                  1,500+
+                  {localUsers}
                 </div>
                 <h4 className="text-white font-bold mb-1">Sri Lankan Active Users</h4>
                 <p className="text-slate-400 text-sm">Growing local user community</p>
@@ -122,8 +128,8 @@ export default function AboutSection() {
             },
             {
               icon: Zap,
-              color: "text-amber-400",
-              bg: "bg-amber-400/10",
+              color: "text-blue-400",
+              bg: "bg-blue-400/10",
               title: "Why Choose Us",
               desc: "Custom-built solutions designed specifically for your business, with unmatched local support and global standards."
             },

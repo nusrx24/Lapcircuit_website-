@@ -27,25 +27,44 @@ export default function ContactPage() {
       message: formData.get("message") as string,
     };
 
-    if (!hasSupabaseKeys) {
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSuccess(true);
-        (e.target as HTMLFormElement).reset();
-      }, 1000);
-      return;
-    }
+    try {
+      // Send to Web3Forms for email notification
+      const web3Response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "585a8120-191b-4bb0-b1d3-482cb6ce114e",
+          from_name: "LapCircuit Website",
+          subject: "New Contact Form Submission",
+          ...inquiry,
+        }),
+      });
 
-    const { error } = await supabase.from("inquiries").insert([inquiry]);
+      const web3Result = await web3Response.json();
 
-    setIsSubmitting(false);
+      if (!web3Response.ok || !web3Result.success) {
+        throw new Error(web3Result.message || "Failed to send email notification");
+      }
 
-    if (error) {
-      console.error(error);
-      setError("Something went wrong. Please try again or reach us via WhatsApp.");
-    } else {
+      // Optionally save to Supabase if configured
+      if (hasSupabaseKeys) {
+        const { error: supabaseError } = await supabase.from("inquiries").insert([inquiry]);
+        if (supabaseError) {
+          console.error("Supabase Error:", JSON.stringify(supabaseError, null, 2));
+          // We don't fail the whole form if email was sent
+        }
+      }
+
       setSuccess(true);
       (e.target as HTMLFormElement).reset();
+    } catch (err: any) {
+      console.error("Form Submission Error:", err);
+      setError(err.message || "Something went wrong. Please try again or reach us via WhatsApp.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

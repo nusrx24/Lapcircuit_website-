@@ -6,16 +6,63 @@ import CustomerHandover from "@/components/home/CustomerHandover";
 import TrustedBy from "@/components/home/TrustedBy";
 import FeaturesGrid from "@/components/home/FeaturesGrid";
 import AboutSection from "@/components/home/AboutSection";
+import TrustBadges from "@/components/home/TrustBadges";
 import { safeFetch, supabase } from "@/lib/supabase";
 
 export default async function Home() {
-  const clientsResult = await safeFetch(
-    supabase.from("client_logos").select("*").eq("is_active", true).order("display_order"),
-    []
-  );
+  const [clientsResult, statsResult, testimonialsResult] = await Promise.all([
+    safeFetch(
+      supabase.from("client_logos").select("*").eq("is_active", true).order("display_order"),
+      []
+    ),
+    safeFetch(
+      supabase.from("stats").select("*").order("created_at"),
+      [
+        { label: "Businesses Served", value: "500+" },
+        { label: "Laptops Sold", value: "1200+" },
+        { label: "POS Installed", value: "750+" },
+        { label: "Uptime", value: "99%" },
+        { label: "Global Active Users", value: "5,000+" },
+        { label: "Sri Lankan Active Users", value: "1,500+" },
+      ]
+    ),
+    safeFetch(
+      supabase.from("testimonials").select("*").eq("is_approved", true).order("created_at", { ascending: false }).limit(3),
+      [
+        {
+          id: "1",
+          client_name: "Ruwan Wijesinghe",
+          business_name: "FreshMart Supermarkets",
+          location: "Colombo",
+          review: "LapCircuit completely overhauled our 5-branch network. The POS systems are incredibly fast, and their lifetime support promise is real. They answer the phone at 2 AM.",
+          rating: 5,
+        },
+        {
+          id: "2",
+          client_name: "Sarah Fernando",
+          business_name: "Cafe Colombo",
+          location: "Kandy",
+          review: "As a small cafe owner, I was intimidated by complex systems. The LapCircuit team set everything up, trained my staff in one day, and the touchscreens work flawlessly.",
+          rating: 5,
+        },
+        {
+          id: "3",
+          client_name: "Dinesh Kumar",
+          business_name: "MediCare Pharmacy",
+          location: "Galle",
+          review: "We purchased 10 business laptops for our back office along with our front-desk POS. Excellent hardware quality and unbeatable pricing. Highly recommended.",
+          rating: 5,
+        }
+      ]
+    )
+  ]);
+
+  // Extract relevant stats for the AboutSection
+  const globalUsers = statsResult.find((s: any) => s.label.includes("Global"))?.value || "5,000+";
+  const localUsers = statsResult.find((s: any) => s.label.includes("Sri Lankan"))?.value || "1,500+";
 
   return (
-    <main className="flex flex-col min-h-screen relative selection:bg-blue-500/30">
+    <main className="flex flex-col min-h-screen relative selection:bg-sky-500/30">
       <Header />
 
       {/* ── SECTION 1: HERO ── */}
@@ -33,7 +80,7 @@ export default async function Home() {
             We supply, install, and maintain enterprise-grade POS systems and high-performance laptops for retail, restaurants, and corporate offices — backed by our <span className="text-white font-medium">lifetime maintenance guarantee</span>.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link href="/contact" className="btn-primary !px-8 !py-4 !text-lg">
               Get Free Demo <ArrowRight size={20} />
             </Link>
@@ -42,13 +89,7 @@ export default async function Home() {
             </a>
           </div>
 
-          <p className="text-sm font-medium text-slate-400 tracking-wide flex items-center justify-center gap-3">
-            <CheckCircle2 size={16} className="text-green-500" /> Island-wide coverage
-            <span className="text-slate-600 px-2">•</span>
-            <CheckCircle2 size={16} className="text-green-500" /> No hidden fees
-            <span className="text-slate-600 px-2">•</span>
-            <CheckCircle2 size={16} className="text-green-500" /> 24/7 Support
-          </p>
+          <TrustBadges />
         </div>
       </section>
 
@@ -59,40 +100,30 @@ export default async function Home() {
       <section className="relative z-20 pb-24 pt-12 bg-white">
         <div className="container-xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            <div className="stat-card">
-              <div className="text-4xl md:text-5xl font-bold mb-2 font-heading text-gradient">500+</div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Businesses Served</p>
-            </div>
-            <div className="stat-card">
-              <div className="text-4xl md:text-5xl font-bold mb-2 font-heading text-gradient">1200+</div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Laptops Sold</p>
-            </div>
-            <div className="stat-card">
-              <div className="text-4xl md:text-5xl font-bold mb-2 font-heading text-gradient">750+</div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">POS Installed</p>
-            </div>
-            <div className="stat-card">
-              <div className="text-4xl md:text-5xl font-bold mb-2 font-heading text-gradient">99%</div>
-              <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Uptime</p>
-            </div>
+            {statsResult.filter((s: any) => !s.label.includes("Users")).slice(0, 4).map((stat: any, i: number) => (
+              <div key={i} className="stat-card">
+                <div className="text-4xl md:text-5xl font-bold mb-2 font-heading text-gradient">{stat.value}</div>
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── SECTION 2.5: WHO WE ARE (ABOUT) ── */}
-      <AboutSection />
+      <AboutSection globalUsers={globalUsers} localUsers={localUsers} />
 
       {/* ── SECTION 3: SERVICES ── */}
       <section className="pb-32 relative z-10">
         <div className="container-xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="heading-lg mb-4 text-slate-900">Our Expertise</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-500 to-sky-400 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto group/grid">
             <div className="card p-10 flex flex-col items-start relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-20 -mt-20 transition-all duration-500 group-hover:bg-blue-500/10"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-sky-500/5 rounded-full blur-3xl -mr-20 -mt-20 transition-all duration-500 group-hover:bg-sky-500/10"></div>
               
               <div className="icon-box mb-8 relative z-10">
                 <Monitor size={24} />
@@ -151,40 +182,22 @@ export default async function Home() {
         <div className="container-xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="heading-lg mb-4 text-slate-900">What Our Clients Say</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-500 to-sky-400 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {[
-              {
-                id: "1",
-                client_name: "Ruwan Wijesinghe",
-                business_name: "FreshMart Supermarkets",
-                location: "Colombo",
-                review: "LapCircuit completely overhauled our 5-branch network. The POS systems are incredibly fast, and their lifetime support promise is real. They answer the phone at 2 AM.",
-                rating: 5,
-              },
-              {
-                id: "2",
-                client_name: "Sarah Fernando",
-                business_name: "Cafe Colombo",
-                location: "Kandy",
-                review: "As a small cafe owner, I was intimidated by complex systems. The LapCircuit team set everything up, trained my staff in one day, and the touchscreens work flawlessly.",
-                rating: 5,
-              },
-              {
-                id: "3",
-                client_name: "Dinesh Kumar",
-                business_name: "MediCare Pharmacy",
-                location: "Galle",
-                review: "We purchased 10 business laptops for our back office along with our front-desk POS. Excellent hardware quality and unbeatable pricing. Highly recommended.",
-                rating: 5,
-              }
-            ].map((testimonial) => (
+            {testimonialsResult.map((testimonial: any) => (
               <div key={testimonial.id} className="review-card group">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-1 text-[var(--star-gold)]">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        size={18} 
+                        fill={i < (testimonial.rating || 5) ? "currentColor" : "none"} 
+                        className={i < (testimonial.rating || 5) ? "text-blue-500" : "text-slate-200"}
+                      />
+                    ))}
                   </div>
                   <span className="badge-verified"><CheckCircle2 size={12} /> Verified</span>
                 </div>

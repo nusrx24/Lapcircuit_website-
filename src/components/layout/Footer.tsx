@@ -15,9 +15,9 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="lg:col-span-3">
             <Link href="/" className="inline-block mb-6" style={{ textDecoration: "none" }}>
-              <span className="font-heading font-black text-2xl tracking-tight text-white flex items-center gap-2">
-                <img src="/logo.png" alt="LapCircuit Logo" className="w-8 h-8 object-contain" />
-                POS from <span className="text-gradient">Lapcircuit</span>
+              <span className="font-heading font-black text-2xl tracking-tight text-white flex items-center gap-3">
+                <img src="/logo.png" alt="LapCircuit" className="w-10 h-10 object-contain" />
+                LapCircuit
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -37,7 +37,7 @@ export default function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500/50 hover:bg-slate-700 transition-all shadow-sm"
+                  className="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-sky-500/50 hover:bg-slate-700 transition-all shadow-sm"
                 >
                   <Icon size={16} />
                 </a>
@@ -56,7 +56,7 @@ export default function Footer() {
                 { href: "/services#consulting", label: "Consulting" },
               ].map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className="text-slate-400 hover:text-blue-400 text-sm font-medium transition-colors" style={{ textDecoration: "none" }}>
+                  <Link href={href} className="text-slate-400 hover:text-sky-400 text-sm font-medium transition-colors" style={{ textDecoration: "none" }}>
                     {label}
                   </Link>
                 </li>
@@ -75,7 +75,7 @@ export default function Footer() {
                 { href: "/contact", label: "Contact" },
               ].map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className="text-slate-400 hover:text-blue-400 text-sm font-medium transition-colors" style={{ textDecoration: "none" }}>
+                  <Link href={href} className="text-slate-400 hover:text-sky-400 text-sm font-medium transition-colors" style={{ textDecoration: "none" }}>
                     {label}
                   </Link>
                 </li>
@@ -93,7 +93,7 @@ export default function Footer() {
                 { Icon: MapPin, text: "Colombo, Sri Lanka", href: undefined },
               ].map(({ Icon, text, href }) => (
                 <div key={text} className="flex items-start gap-3">
-                  <div className="text-blue-400 mt-0.5">
+                  <div className="text-sky-400 mt-0.5">
                     <Icon size={16} />
                   </div>
                   {href ? (
@@ -111,7 +111,7 @@ export default function Footer() {
             <h4 className="font-heading font-bold text-sm text-white uppercase tracking-wider mb-6">Office Hours</h4>
             <div className="flex flex-col gap-4 text-sm font-medium text-slate-400">
               <div className="flex items-start gap-3">
-                <div className="text-blue-400 mt-0.5">
+                <div className="text-sky-400 mt-0.5">
                   <Clock size={16} />
                 </div>
                 <div>
@@ -126,7 +126,7 @@ export default function Footer() {
                 <div>
                   <p className="text-white mb-1">Sat - Sun</p>
                   <p>Closed</p>
-                  <p className="text-xs text-blue-400 mt-2">* 24/7 Support available for active clients</p>
+                  <p className="text-xs text-sky-400 mt-2">* 24/7 Support available for active clients</p>
                 </div>
               </div>
             </div>

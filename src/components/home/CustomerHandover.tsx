@@ -48,7 +48,7 @@ export default function CustomerHandover() {
           className="text-center max-w-2xl mx-auto mb-20"
         >
           <h2 className="heading-lg mb-4 text-slate-900">Customer Handover Process</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-sky-500 to-sky-400 mx-auto rounded-full"></div>
           <p className="mt-6 text-slate-600 font-medium text-lg">
             How we deliver our systems to you, step by step.
           </p>
@@ -59,7 +59,7 @@ export default function CustomerHandover() {
           <div className="hidden lg:block absolute top-[4rem] left-[10%] right-[10%] h-[2px] bg-slate-200" />
           
           <motion.div 
-            className="hidden lg:block absolute top-[4rem] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-blue-500 to-cyan-500 origin-left"
+            className="hidden lg:block absolute top-[4rem] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-sky-500 to-sky-400 origin-left"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -76,10 +76,10 @@ export default function CustomerHandover() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="relative group h-full"
               >
-                <div className="flex flex-col items-center text-center bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 relative z-10 h-full">
+                <div className="flex flex-col items-center text-center bg-slate-50 p-6 rounded-2xl border border-slate-200 hover:-translate-y-2 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300 relative z-10 h-full">
                   
                   {/* Icon Circle */}
-                  <div className="w-20 h-20 shrink-0 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 shadow-sm mb-6 relative group-hover:border-blue-500 group-hover:text-blue-500 transition-colors duration-300">
+                  <div className="w-20 h-20 shrink-0 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 shadow-sm mb-6 relative group-hover:border-sky-500 group-hover:text-sky-500 transition-colors duration-300">
                     <step.icon size={32} />
                     
                     {/* Number Badge */}

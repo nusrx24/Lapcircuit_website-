@@ -40,7 +40,8 @@ CREATE TABLE inquiries (
   name TEXT NOT NULL,
   email TEXT NOT NULL,
   phone TEXT,
-  inquiry_type TEXT,
+  business_type TEXT,
+  service_interest TEXT,
   message TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -111,7 +112,9 @@ INSERT INTO stats (value, label) VALUES
 ('500+', 'Businesses Served'),
 ('1200+', 'Laptops Sold'),
 ('750+', 'POS Installed'),
-('99%', 'Uptime Guaranteed');
+('99%', 'Uptime Guaranteed'),
+('5,000+', 'Global Active Users'),
+('1,500+', 'Sri Lankan Active Users');
 
 -- Insert Team Members
 INSERT INTO team_members (name, role, image_url) VALUES
@@ -142,3 +145,28 @@ INSERT INTO client_logos (name, logo_url, display_order, is_active) VALUES
 ('Alumex - Thushara Group', '', 5, true),
 ('TVS X - Sachin TV', '', 6, true);
 
+-- 8. PRICING COMPARISON TABLE (For the Matrix)
+CREATE TABLE pricing_comparison (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  feature_name TEXT NOT NULL,
+  desktop_pos TEXT NOT NULL,
+  desktop_cloud TEXT NOT NULL,
+  cloud_based TEXT NOT NULL,
+  display_order INTEGER DEFAULT 1,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+ALTER TABLE pricing_comparison ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read access for pricing_comparison" ON pricing_comparison FOR SELECT USING (true);
+
+INSERT INTO pricing_comparison (feature_name, desktop_pos, desktop_cloud, cloud_based, display_order) VALUES
+('Offline Functionality', '✓', '✓', 'Limited', 1),
+('Cloud Backup & Sync', 'X', '✓', '✓', 2),
+('Mobile Dashboard Access', 'X', '✓', '✓', 3),
+('Billing & Invoicing', '✓', '✓', '✓', 4),
+('Inventory Management', '✓', '✓', '✓', 5),
+('Real-Time Reports & Analytics', '✓', '✓', '✓', 6),
+('Multi-Branch Management', 'X', '✓', '✓', 7),
+('AI Chatbot Support', '✓', '✓', '✓', 8),
+('Customer Support (Email/Phone)', '✓', '✓', '✓', 9),
+('Free Hardware Setup', '✓', '✓', 'X', 10);

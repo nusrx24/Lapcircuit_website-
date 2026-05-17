@@ -60,7 +60,7 @@ export default function CursorParticles() {
           y: e.clientY + (Math.random() - 0.5) * 6,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed - 0.5, // drift slightly upward
-          alpha: 0.82,
+          alpha: 0.95,
           radius: Math.random() * 3.5 + 2.5, // 2.5 – 6px
           life,
           maxLife: life,
