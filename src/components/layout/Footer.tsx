@@ -90,7 +90,7 @@ export default function Footer() {
               {[
                 { Icon: Phone, text: "+94 71 124 9740", href: "tel:+94711249740" },
                 { Icon: Mail, text: "lapcircuitinfo@gmail.com", href: "mailto:lapcircuitinfo@gmail.com" },
-                { Icon: MapPin, text: "Colombo, Sri Lanka", href: undefined },
+                { Icon: MapPin, text: "Eravur, Batticaloa Srilanka", href: undefined },
               ].map(({ Icon, text, href }) => (
                 <div key={text} className="flex items-start gap-3">
                   <div className="text-sky-400 mt-0.5">

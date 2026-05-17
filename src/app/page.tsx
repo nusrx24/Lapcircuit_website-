@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
@@ -8,6 +9,18 @@ import FeaturesGrid from "@/components/home/FeaturesGrid";
 import AboutSection from "@/components/home/AboutSection";
 import TrustBadges from "@/components/home/TrustBadges";
 import { safeFetch, supabase } from "@/lib/supabase";
+
+export const metadata: Metadata = {
+  title: "POS Systems & Laptops in Sri Lanka | LapCircuit",
+  description: "LapCircuit provides enterprise POS systems, retail solutions, and quality laptops for businesses across Sri Lanka. 500+ businesses trust us with 99% uptime.",
+  keywords: "POS system Sri Lanka, retail POS, point of sale, laptops, business software, Colombo, Kandy",
+  openGraph: {
+    title: "POS Systems & Laptops in Sri Lanka | LapCircuit",
+    description: "Enterprise POS solutions for retail, restaurants, and businesses. Lifetime support, competitive pricing.",
+    url: "https://lapcircuit.lk",
+    type: "website",
+  },
+};
 
 export default async function Home() {
   const [clientsResult, statsResult, testimonialsResult] = await Promise.all([

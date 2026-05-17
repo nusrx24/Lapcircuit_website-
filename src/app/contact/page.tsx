@@ -72,27 +72,27 @@ export default function ContactPage() {
     <div className="flex flex-col min-h-screen bg-[var(--bg-secondary)]">
       <Header />
       
-      <div className="pt-40 pb-20">
-        <div className="container-xl">
+      <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+        <div className="container-xl px-4 sm:px-6 md:px-0">
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-20 relative">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-            <span className="section-label">Get in Touch</span>
-            <h1 className="heading-xl mb-4">
-              Let&apos;s build your <span className="text-gradient">business setup</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0EA5E9] mb-2 block">Get in Touch</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 font-heading">
+              Let&apos;s build your <span style={{ color: "#0EA5E9" }}>business setup</span>
             </h1>
-            <p className="text-body text-lg font-medium">
+            <p className="text-base sm:text-lg font-medium text-slate-600 leading-relaxed">
               Whether you need a full POS installation, custom software, or mobile applications,
               our team is ready to help you scale.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-[1200px] mx-auto px-4 sm:px-6 md:px-0">
             {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="card p-10">
-                <h3 className="heading-md mb-10 text-slate-900">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="card p-6 sm:p-8 md:p-10">
+                <h3 className="text-2xl sm:text-3xl font-black mb-8 sm:mb-10 text-slate-900 font-heading">
                   Contact Information
                 </h3>
                 <div className="space-y-10">
@@ -122,7 +122,7 @@ export default function ContactPage() {
                     </div>
                     <div className="pt-1">
                       <p className="text-xs text-slate-500 mb-1.5 font-bold uppercase tracking-wider">Headquarters</p>
-                      <p className="font-bold text-slate-900 text-lg">Colombo, Sri Lanka<br/><span className="text-sm font-medium text-slate-500 mt-2 block">Island-wide installation available</span></p>
+                      <p className="font-bold text-slate-900 text-lg">Eravur, Batticaloa ship 30300<br/><span className="text-sm font-medium text-slate-500 mt-2 block">Island-wide installation available</span></p>
                     </div>
                   </div>
                 </div>
@@ -140,9 +140,9 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div className="card p-10">
+            <div className="card p-6 sm:p-10">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-[13px] font-bold uppercase tracking-wider text-slate-600">Full Name *</label>
                     <input required type="text" id="name" name="name" className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium text-slate-900 outline-none" placeholder="John Doe" />
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   <input required type="email" id="email" name="email" className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium text-slate-900 outline-none" placeholder="john@company.com" />
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <label htmlFor="business_type" className="text-[13px] font-bold uppercase tracking-wider text-slate-600">Business Type</label>
                     <select id="business_type" name="business_type" className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium text-slate-900 outline-none appearance-none">

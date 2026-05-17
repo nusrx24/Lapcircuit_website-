@@ -1,7 +1,9 @@
 "use client";
 
+import { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PricingComparison from "@/components/pricing/PricingComparison";
 import { 
   Store, Utensils, Pill, Coffee, Bed, Shirt, 
   CheckCircle2, ArrowRight, Phone, Mail, HelpCircle, 
@@ -158,15 +160,15 @@ export default function PricingPage() {
       <Header />
       
       {/* ── 1. HERO SECTION ── */}
-      <section className="pt-48 pb-32 bg-gradient-to-b from-[#E0F2FE] to-white relative overflow-hidden">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 lg:pt-48 lg:pb-32 bg-gradient-to-b from-[#E0F2FE] to-white relative overflow-hidden">
         <div className="bg-mesh absolute inset-0 opacity-40"></div>
-        <div className="container-xl relative z-10 text-center">
-          <span className="section-label mb-6">Pricing Plans</span>
-          <h1 className="heading-xl mb-8">
-            Transparent Pricing for <br />
-            <span className="text-gradient">Every Industry</span>
+        <div className="container-xl relative z-10 text-center px-4 sm:px-6 md:px-8">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#0EA5E9] mb-3 sm:mb-6 block">Pricing Plans</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 sm:mb-8 font-heading">
+            Transparent Pricing for <br className="hidden sm:block" />
+            <span style={{ color: "#0EA5E9" }}>Every Industry</span>
           </h1>
-          <p className="text-body text-xl max-w-2xl mx-auto font-medium">
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-medium text-slate-600 leading-relaxed">
             No hidden costs. No monthly traps. Just powerful POS solutions 
             designed to grow your business in Sri Lanka.
           </p>
@@ -174,11 +176,11 @@ export default function PricingPage() {
       </section>
 
       {/* ── 2. INDUSTRY PRICING GRID ── */}
-      <section className="section-pad bg-white relative">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative px-4 sm:px-6 md:px-0">
         <div className="container-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
             {industries.map((item, i) => (
-              <div key={i} className="card p-10 flex flex-col relative bg-[#F8FAFC]/50 backdrop-blur-sm">
+              <div key={i} className="card p-6 sm:p-8 md:p-10 flex flex-col relative bg-[#F8FAFC]/50 backdrop-blur-sm">
                 {item.tag && (
                   <div className="absolute top-6 right-6">
                     <span className="bg-sky-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg shadow-sky-500/20">
@@ -218,6 +220,9 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      {/* ── 2.5 PRICING COMPARISON TABLE ── */}
+      <PricingComparison />
 
       {/* ── 3. WHAT'S INCLUDED ── */}
       <section className="section-pad bg-[#F0F9FF]">
@@ -342,11 +347,11 @@ export default function PricingPage() {
       </section>
 
       {/* ── 6. FAQ SECTION ── */}
-      <section className="section-pad bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white px-4 sm:px-6 md:px-0">
         <div className="container-xl max-w-4xl">
-          <div className="text-center mb-20">
-            <h2 className="heading-lg mb-4 text-slate-900 heading-accent">Pricing FAQ</h2>
-            <p className="text-slate-500 font-medium mt-6">Got questions? We have answers.</p>
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight text-slate-900 font-heading mb-4">Pricing FAQ</h2>
+            <p className="text-slate-500 font-medium mt-4 sm:mt-6 text-base sm:text-lg">Got questions? We have answers.</p>
           </div>
 
           <div className="space-y-4">
