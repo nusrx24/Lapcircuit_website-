@@ -1,12 +1,14 @@
 import { safeFetch, supabase } from "@/lib/supabase";
 import { Metadata } from "next";
-import { Star, CheckCircle2, Shield, Settings, Wrench, Clock, Users, Laptop } from "lucide-react";
+import { Star, CheckCircle2, Shield, Settings, Wrench, Clock, Users, Laptop, Briefcase, Quote } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CustomerHandover from "@/components/home/CustomerHandover";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Testimonials | LapCircuit",
-  description: "See what our clients say about LapCircuit's POS and laptop services.",
+  title: "Success Stories | LapCircuit",
+  description: "See what our clients say about LapCircuit's POS and laptop services along with project handover photos.",
 };
 
 const mockTestimonials = [
@@ -17,6 +19,8 @@ const mockTestimonials = [
     location: "Colombo",
     review: "LapCircuit completely overhauled our 5-branch network. The POS systems are incredibly fast, and their lifetime support promise is real. They answer the phone at 2 AM. Highly recommend their services to any expanding retail business.",
     rating: 5,
+    project_type: "Supermarket POS Network",
+    image_url: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "2",
@@ -33,6 +37,8 @@ const mockTestimonials = [
     location: "Galle",
     review: "We purchased 10 business laptops for our back office along with our front-desk POS. Excellent hardware quality and unbeatable pricing.",
     rating: 5,
+    project_type: "Corporate Laptops",
+    image_url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop",
   },
   {
     id: "4",
@@ -73,18 +79,28 @@ export default async function TestimonialsPage() {
       {/* ── Header Area with Dark Slate bg for contrast ── */}
       <div className="pt-40 pb-24 bg-[var(--bg-deep)] relative overflow-hidden isolate">
         <div className="glow-bg top-0 left-1/2 -translate-x-1/2 opacity-50"></div>
-        <div className="container-xl relative z-10 text-center max-w-3xl mx-auto">
-          <span className="section-label-dark">Client Success</span>
-          <h1 className="heading-xl text-white mb-6">What Our Clients Say</h1>
+        <div className="container-xl relative z-10 text-center max-w-4xl mx-auto">
+          <span className="section-label-dark">Success Stories</span>
+          <h1 className="heading-xl text-white mb-6">Customer Handovers & Reviews</h1>
           <p className="text-slate-300 text-lg md:text-xl font-medium">
-            Don&apos;t just take our word for it. Here is what our partners have to say 
-            about our hardware and lifetime support across Sri Lanka.
+            Don&apos;t just take our word for it. See real-world projects we have completed
+            and hear what our partners have to say about our hardware and lifetime support across Sri Lanka.
           </p>
         </div>
       </div>
 
       <div className="-mt-12 pb-24 relative z-20">
         <div className="container-xl">
+
+          {/* Customer Handover Process */}
+          <div className="mb-24">
+            <CustomerHandover />
+          </div>
+
+          <div className="text-center mb-16 relative z-10">
+            <span className="section-label">Real Projects</span>
+            <h2 className="heading-lg">Recent Success Stories</h2>
+          </div>
 
           {/* Stats Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-24">
@@ -111,33 +127,62 @@ export default async function TestimonialsPage() {
           {/* Reviews Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto mb-32">
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="review-card group">
-                <div className="flex justify-between items-start mb-2">
-                  <div className="stars transition-transform group-hover:scale-105">
-                    {[...Array(5)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        size={18} 
-                        fill={i < (testimonial.rating || 5) ? "currentColor" : "none"} 
-                        className={i < (testimonial.rating || 5) ? "text-blue-500" : "text-slate-200"}
-                      />
-                    ))}
+              <div key={testimonial.id} className="review-card group overflow-hidden flex flex-col p-0">
+                {/* Image Section */}
+                {testimonial.image_url ? (
+                  <div className="relative w-full h-56 bg-slate-100 overflow-hidden">
+                    <Image 
+                      src={testimonial.image_url} 
+                      alt={`${testimonial.client_name} - ${testimonial.business_name} Handover`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    {testimonial.project_type && (
+                      <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-white/10 shadow-xl">
+                        <Briefcase size={12} />
+                        {testimonial.project_type}
+                      </div>
+                    )}
                   </div>
-                  <span className="badge-verified"><CheckCircle2 size={14} /> Verified</span>
-                </div>
-                
-                <p className="text-slate-700 leading-relaxed text-[15px] font-medium flex-grow mb-4">
-                  &quot;{testimonial.review}&quot;
-                </p>
-                
-                <div className="border-t border-slate-100 pt-5 mt-auto flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 border border-blue-200 flex items-center justify-center text-blue-700 font-bold font-heading text-lg">
-                    {testimonial.client_name.charAt(0)}
+                ) : (
+                  <div className="relative w-full h-32 bg-gradient-to-br from-sky-50 to-blue-50/50 flex flex-col p-6 items-start justify-center border-b border-sky-100/50">
+                    <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center -mb-6 z-10 border border-slate-100">
+                      <Quote size={20} className="text-sky-500" />
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-[15px] leading-tight">{testimonial.client_name}</h4>
-                    <div className="flex items-center gap-2 mt-1">
-                      <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">{testimonial.business_name}</p>
+                )}
+
+                <div className="p-6 md:p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="stars flex gap-0.5 transition-transform group-hover:scale-105">
+                      {[...Array(5)].map((_, i) => (
+                        <Star 
+                          key={i} 
+                          size={16} 
+                          fill={i < (testimonial.rating || 5) ? "currentColor" : "none"} 
+                          className={i < (testimonial.rating || 5) ? "text-blue-500" : "text-slate-200"}
+                        />
+                      ))}
+                    </div>
+                    <span className="badge-verified"><CheckCircle2 size={14} /> Verified</span>
+                  </div>
+                  
+                  <p className="text-slate-700 leading-relaxed text-[15px] font-medium flex-grow mb-6 isolate relative">
+                    <span className="hidden opacity-0">&quot;</span>{testimonial.review}<span className="hidden opacity-0">&quot;</span>
+                  </p>
+                  
+                  <div className="border-t border-slate-100 pt-5 mt-auto flex items-center gap-4">
+                    {!testimonial.image_url && (
+                      <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 border border-blue-200 flex items-center justify-center text-blue-700 font-bold font-heading text-lg flex-shrink-0">
+                        {testimonial.client_name.charAt(0)}
+                      </div>
+                    )}
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-[15px] leading-tight group-hover:text-blue-600 transition-colors">{testimonial.client_name}</h4>
+                      <div className="flex items-center gap-2 mt-1">
+                        <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">{testimonial.business_name}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

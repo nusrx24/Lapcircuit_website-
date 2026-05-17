@@ -9,6 +9,8 @@ CREATE TABLE testimonials (
   location TEXT,
   review TEXT NOT NULL,
   rating INTEGER DEFAULT 5 CHECK (rating >= 1 AND rating <= 5),
+  image_url TEXT, -- Added for Success Stories handover photos
+  project_type TEXT, -- Added for Success Stories tagging (POS, Laptops, etc.)
   is_approved BOOLEAN DEFAULT true,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
